@@ -1,0 +1,58 @@
+.body{
+  padding-top: 70px;
+  padding-bottom: 60px;
+}
+.designs{
+  text-align: center;
+}
+/* .table{
+  border: 10px solid orange;
+  font-style: fantasy;
+  font-size: 20px;
+  width: 100%;
+} */
+.table {
+  border-collapse: collapse;
+  width: 70%;
+  font-size: 20px;
+  font-style: fantasy;
+}
+.th,.td {
+  text-align: left;
+  padding: 8px;
+}
+.tr:nth-child(even) {
+  background-color: #f2f2f2;
+  height: 70px;
+}
+.navbar {
+  background-color: #666;
+  padding: 5px;
+  text-align: center;
+  font-size: 20px;
+  color: white;
+}
+
+.fixed-bottom{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-size: 20px;
+}
+.h1{
+  color:darkgoldenrod;
+  font-family: fantasy;
+  text-align:center;
+  padding: 5px;
+}
+.header{
+  color: brown;
+  font-style: fantasy;
+  font-size: 20px;
+  padding: 5px;
+}
+.error{
+  color: red;
+}
+

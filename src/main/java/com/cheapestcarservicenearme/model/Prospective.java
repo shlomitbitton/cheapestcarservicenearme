@@ -10,6 +10,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.GenericGenerator;
+
 // import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.List;
@@ -17,7 +19,8 @@ import java.util.List;
 @Entity
 public class Prospective {
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @GeneratedValue(generator="system-uuid")
+  @GenericGenerator(name="system-uuid", strategy = "uuid")
   private String id;
   @NotNull
   @NotBlank

@@ -21,7 +21,7 @@
     <!-- <span class="success">${dataSaved}</span> -->
     
     <div>
-        <form th:action="@{/registration}" th:Object="serviceInquiry"  method="post" modelAttribute="serviceInquiry">
+        <form th:action="@{/findService}" th:Object="serviceInquiry"  method="post" modelAttribute="serviceInquiry">
           <label for="location">Service inquired about</label>:
           <select th:field="*{listOfServices}">
             <option th:value="'OilChange'" th:text="Oil Change"></option>
@@ -32,7 +32,7 @@
             <option th:value="'GrassValley'" th:text="Grass Valley"></option>
             <option th:value="'Nevada City'" th:text="Nevada City"></option>
          </select>
-         <button type="submit" th:text="#{label.form.submit}">submit</button>
+         <button type="submit" th:text="Submit">Submit</button>
         </form>
     </div>
     <!-- <div class="header">

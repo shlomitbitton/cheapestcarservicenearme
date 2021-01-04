@@ -52,15 +52,16 @@ public class ProspectiveController {
     return "registration";
   }
   @PostMapping("/registration")
-  public ModelAndView registerProspectiveAccount(@ModelAttribute("prospective") @Valid Prospective prospective,
+  public String registerProspectiveAccount(@ModelAttribute("prospective") @Valid Prospective prospective,
   HttpServletRequest request, Errors errors) {
     ModelAndView mav= new ModelAndView();
     try{
       Prospective registered = prospectiveRepository.save(prospective);
     }catch(UserAlreadyExistException uaeEx) {
         mav.addObject("message", "An account for that username/email already exists.");
-        return mav;
+        return "login";
     }
-    return new ModelAndView("successRegister", "prospective", prospective);
+    mav.addObject("successRegister", prospective); 
+    return "findService.html";
   }
 }

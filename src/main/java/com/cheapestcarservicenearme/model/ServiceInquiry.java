@@ -4,21 +4,22 @@ package com.cheapestcarservicenearme.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class ServiceInquiry {
   
   @Id
-  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @GeneratedValue(generator="system-uuid")
+  @GenericGenerator(name="system-uuid", strategy = "uuid")
   private String id;
   private String location;
 
   @OneToMany
-  List<VehicleService> listOfServices;
+  List<VehicleService> listOfServicesInquired;
 
   public String getId() {
     return id;
@@ -36,11 +37,13 @@ public class ServiceInquiry {
     this.location = location;
   }
 
-  public List<VehicleService> getListOfServices() {
-    return listOfServices;
+  public List<VehicleService> getListOfServicesInquired() {
+    return listOfServicesInquired;
   }
 
-  public void setListOfServices(List<VehicleService> listOfServices) {
-    this.listOfServices = listOfServices;
+  public void setListOfServicesInquired(List<VehicleService> listOfServicesInquired) {
+    this.listOfServicesInquired = listOfServicesInquired;
   }
+
+  
 }

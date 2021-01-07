@@ -1,11 +1,16 @@
 package com.cheapestcarservicenearme.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import com.cheapestcarservicenearme.exceptions.UserAlreadyExistException;
 import com.cheapestcarservicenearme.model.Prospective;
 import com.cheapestcarservicenearme.model.ServiceInquiry;
+import com.cheapestcarservicenearme.model.VehicleService;
 import com.cheapestcarservicenearme.repository.ProspectiveInquiryRepository;
 import com.cheapestcarservicenearme.repository.ProspectiveRepository;
 
@@ -29,10 +34,22 @@ public class ProspectiveController {
 
   @GetMapping("/findService")
   public String findService(Model model, @ModelAttribute("serviceInquiry") ServiceInquiry serviceInquiry){
-    model.addAttribute("serviceInquiry", serviceInquiry.getListOfServices());
+    model.addAttribute("serviceInquiry", serviceInquiry.getListOfServicesInquired());
     return "findService.html";
   }
 
+  // @PostMapping("/findService")
+  // public List<VehicleService>  getservicesInquired(@ModelAttribute("serviceInquiry") ServiceInquiry serviceInquiry){
+  //   List<VehicleService> listOfInquiredServices = new ArrayList<VehicleService> ();
+  //   listOfInquiredServices = serviceInquiry.setListOfServicesInquired();
+  //   return listOfInquiredServices;
+  // }
+
+  @ModelAttribute("serviceInquiry")
+  public List<VehicleService>  getServicesAvailable(){
+    List<VehicleService> listOfInquiredServices = new ArrayList<VehicleService> ();
+    return listOfInquiredServices;
+  }
 
   @GetMapping("/")
   public String home(){
@@ -42,7 +59,7 @@ public class ProspectiveController {
 
   @GetMapping("/listOfShops")
   public String listOfShopsAvailableForService(){
-    return "listOfShops.html";
+    return "listOfShops";
   }
 
   @GetMapping("/registration")
@@ -62,6 +79,6 @@ public class ProspectiveController {
         return "login";
     }
     mav.addObject("successRegister", prospective); 
-    return "findService.html";
+    return "findService";
   }
 }

@@ -4,7 +4,8 @@ package com.cheapestcarservicenearme.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -13,20 +14,17 @@ public class ShopServicePrice {
   @Id
   @GeneratedValue(generator="system-uuid")
   @GenericGenerator(name="system-uuid", strategy = "uuid")
-  private String id;
+  private String shopServicePriceId;
   private Double servicePrice;
 
-  @OneToMany
-  private Shop shopId;
+  @ManyToOne
+  @JoinColumn(name = "shop_id")
+  private Shop shop;
 
+  @ManyToOne
+  @JoinColumn(name = "vehicle_service_id")
+  private VehicleService vehicleService;
 
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
 
   public Double getServicePrice() {
     return servicePrice;
@@ -36,11 +34,28 @@ public class ShopServicePrice {
     this.servicePrice = servicePrice;
   }
 
-  public Shop getShopId() {
-    return shopId;
+  public Shop getShop() {
+    return shop;
   }
 
-  public void setShopId(Shop shopId) {
-    this.shopId = shopId;
+  public void setShop(Shop shop) {
+    this.shop = shop;
   }
+
+  public VehicleService getVehicleService() {
+    return vehicleService;
+  }
+
+  public void setVehicleService(VehicleService vehicleService) {
+    this.vehicleService = vehicleService;
+  }
+
+  public String getShopServicePriceId() {
+    return shopServicePriceId;
+  }
+
+  public void setShopServicePriceId(String shopServicePriceId) {
+    this.shopServicePriceId = shopServicePriceId;
+  }
+
 }

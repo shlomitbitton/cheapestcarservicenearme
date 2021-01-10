@@ -5,7 +5,6 @@ package com.cheapestcarservicenearme.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -13,14 +12,13 @@ import org.hibernate.annotations.GenericGenerator;
 
 // import org.hibernate.validator.constraints.NotEmpty;
 
-import java.util.List;
 
 @Entity
 public class Prospective {
   @Id
   @GeneratedValue(generator="system-uuid")
   @GenericGenerator(name="system-uuid", strategy = "uuid")
-  private String id;
+  private String prospectiveId;
   @NotNull
   @NotBlank
   // @NotEmpty
@@ -35,8 +33,8 @@ public class Prospective {
   private String email;
  // private int serviceInquiryId;
 
- @OneToMany
- List<ServiceInquiry> serviceInquiryIdList;
+//  @OneToMany
+//  List<ServiceInquiry> serviceInquiryIdList;
 
  public Prospective(){
 }
@@ -45,15 +43,6 @@ public class Prospective {
    this.email=email;
    this.lastName=lastName;
    this.firstName=firstName;
- }
-
-
- public String getId() {
-   return id;
- }
-
- public void setId(String id) {
-   this.id = id;
  }
 
  public String getFirstName() {
@@ -80,13 +69,14 @@ public class Prospective {
    this.email = email;
  }
 
- public List<ServiceInquiry> getServiceInquiryIdList() {
-   return serviceInquiryIdList;
+ public String getProspectiveId() {
+   return prospectiveId;
  }
 
- public void setServiceInquiryIdList(List<ServiceInquiry> serviceInquiryIdList) {
-   this.serviceInquiryIdList = serviceInquiryIdList;
+ public void setProspectiveId(String prospectiveId) {
+   this.prospectiveId = prospectiveId;
  }
+
 
  
 

@@ -1,7 +1,6 @@
 package com.cheapestcarservicenearme.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +12,8 @@ import com.cheapestcarservicenearme.model.ServiceInquiry;
 import com.cheapestcarservicenearme.model.VehicleService;
 import com.cheapestcarservicenearme.repository.ProspectiveInquiryRepository;
 import com.cheapestcarservicenearme.repository.ProspectiveRepository;
+import com.cheapestcarservicenearme.service.ProspectiveService;
+import com.cheapestcarservicenearme.service.ShopService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,13 +29,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class ProspectiveController {
   
   @Autowired
-  private ProspectiveRepository prospectiveRepository;
+  private ProspectiveService prospectiveService;
   @Autowired
-	private ProspectiveInquiryRepository prospectiveInquiryRepository;
-
+  private ShopService shopService;
+  
   @GetMapping("/findService")
   public String findService(Model model, @ModelAttribute("serviceInquiry") ServiceInquiry serviceInquiry){
-    model.addAttribute("serviceInquiry", serviceInquiry.getListOfServicesInquired());
+    model.addAttribute("serviceInquiry", shopService.getShopServices());
     return "findService.html";
   }
 
@@ -73,7 +74,7 @@ public class ProspectiveController {
   HttpServletRequest request, Errors errors) {
     ModelAndView mav= new ModelAndView();
     try{
-      Prospective registered = prospectiveRepository.save(prospective);
+      Prospective registered = prospectiveService.saveProspective(prospective);
     }catch(UserAlreadyExistException uaeEx) {
         mav.addObject("message", "An account for that username/email already exists.");
         return "login";

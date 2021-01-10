@@ -1,7 +1,5 @@
 package com.cheapestcarservicenearme.service;
 
-import java.util.Arrays;
-
 import javax.transaction.Transactional;
 
 import com.cheapestcarservicenearme.exceptions.UserAlreadyExistException;
@@ -10,7 +8,9 @@ import com.cheapestcarservicenearme.repository.ProspectiveRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProspectiveService{
 
 
@@ -54,4 +54,8 @@ public class ProspectiveService{
           // credentialsNonExpired, accountNonLocked, 
           // getAuthorities(prospective.getRoles()));
     }
+    public Prospective saveProspective(Prospective prospective){
+      return prospectiveRepository.save(prospective);
+    }
+   
 }

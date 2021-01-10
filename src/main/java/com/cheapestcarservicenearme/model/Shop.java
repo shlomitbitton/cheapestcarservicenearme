@@ -9,21 +9,22 @@ import javax.persistence.MapKey;
 import javax.persistence.JoinColumn;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
-import java.util.List;
 import org.hibernate.annotations.GenericGenerator;
-import java.util.Map;
+import java.util.Set;
 
 @Entity
 public class Shop {
   @Id
   @GeneratedValue(generator="system-uuid")
   @GenericGenerator(name="system-uuid", strategy = "uuid")
-  private String id;
+  private String shopId;
   private String name;
   private String address;
   private String phoneNumber;
+
+  @OneToMany(mappedBy = "shop")
+  Set<ShopServicePrice> shopServicePrices;
   
 // //shop service and a price
 //   @OneToMany(cascade = CascadeType.ALL)
@@ -34,13 +35,6 @@ public class Shop {
 //   private Map<VehicleService, Double> servicePriceMap;
 
 
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
 
   public String getName() {
     return name;
@@ -64,6 +58,22 @@ public String getPhoneNumber() {
 
 public void setPhoneNumber(String phoneNumber) {
 	this.phoneNumber = phoneNumber;
+}
+
+public Set<ShopServicePrice> getShopServicePrices() {
+	return shopServicePrices;
+}
+
+public void setShopServicePrices(Set<ShopServicePrice> shopServicePrices) {
+	this.shopServicePrices = shopServicePrices;
+}
+
+public String getShopId() {
+	return shopId;
+}
+
+public void setShopId(String shopId) {
+	this.shopId = shopId;
 }
 
 

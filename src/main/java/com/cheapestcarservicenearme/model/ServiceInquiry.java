@@ -3,8 +3,10 @@
 package com.cheapestcarservicenearme.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.List;
 import org.hibernate.annotations.GenericGenerator;
@@ -15,19 +17,14 @@ public class ServiceInquiry {
   @Id
   @GeneratedValue(generator="system-uuid")
   @GenericGenerator(name="system-uuid", strategy = "uuid")
-  private String id;
+  private String serviceInquiryId;
   private String location;
 
-  @OneToMany
-  List<VehicleService> listOfServicesInquired;
+  @ManyToOne(fetch = FetchType.LAZY)
+  private Prospective prospective;
 
-  public String getId() {
-    return id;
-  }
-
-  public void setId(String id) {
-    this.id = id;
-  }
+  // @OneToMany
+  // List<VehicleService> listOfServicesInquired;
 
   public String getLocation() {
     return location;
@@ -37,13 +34,23 @@ public class ServiceInquiry {
     this.location = location;
   }
 
-  public List<VehicleService> getListOfServicesInquired() {
-    return listOfServicesInquired;
+  public Prospective getProspective() {
+    return prospective;
   }
 
-  public void setListOfServicesInquired(List<VehicleService> listOfServicesInquired) {
-    this.listOfServicesInquired = listOfServicesInquired;
+  public void setProspective(Prospective prospective) {
+    this.prospective = prospective;
   }
+
+  public String getServiceInquiryId() {
+    return serviceInquiryId;
+  }
+
+  public void setServiceInquiryId(String serviceInquiryId) {
+    this.serviceInquiryId = serviceInquiryId;
+  }
+
+ 
 
   
 }

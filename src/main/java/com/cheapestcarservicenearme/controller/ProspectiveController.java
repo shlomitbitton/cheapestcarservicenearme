@@ -10,8 +10,6 @@ import com.cheapestcarservicenearme.exceptions.UserAlreadyExistException;
 import com.cheapestcarservicenearme.model.Prospective;
 import com.cheapestcarservicenearme.model.ServiceInquiry;
 import com.cheapestcarservicenearme.model.VehicleService;
-import com.cheapestcarservicenearme.repository.ProspectiveInquiryRepository;
-import com.cheapestcarservicenearme.repository.ProspectiveRepository;
 import com.cheapestcarservicenearme.service.ProspectiveService;
 import com.cheapestcarservicenearme.service.ShopService;
 
@@ -36,7 +34,7 @@ public class ProspectiveController {
   @GetMapping("/findService")
   public String findService(Model model, @ModelAttribute("serviceInquiry") ServiceInquiry serviceInquiry){
     model.addAttribute("serviceInquiry", shopService.getShopServices());
-    return "findService.html";
+    return "findService";
   }
 
   // @PostMapping("/findService")
@@ -55,7 +53,7 @@ public class ProspectiveController {
   @GetMapping("/")
   public String home(){
     System.out.println("I am at the home mapping");
-    return "forward:/registration.html";
+    return "forward:/registration";
   }
 
   @GetMapping("/listOfShops")

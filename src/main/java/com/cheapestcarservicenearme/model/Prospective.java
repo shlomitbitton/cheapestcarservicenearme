@@ -7,10 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
+import javax.validation.constraints.NotEmpty;
 import org.hibernate.annotations.GenericGenerator;
-
-// import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
@@ -21,15 +19,15 @@ public class Prospective {
   private String prospectiveId;
   @NotNull
   @NotBlank
-  // @NotEmpty
+  @NotEmpty
   private String firstName;
   @NotNull
   @NotBlank
-  // @NotEmpty
+  @NotEmpty
   private String lastName;
   @NotNull
   @NotBlank
-  // @NotEmpty
+  @NotEmpty
   private String email;
  // private int serviceInquiryId;
 

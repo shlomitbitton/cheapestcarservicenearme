@@ -2,16 +2,23 @@
 
 package com.cheapestcarservicenearme.model;
 
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.NotEmpty;
 import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.DiscriminatorType;
 
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="user_type", 
+  discriminatorType = DiscriminatorType.STRING)
 public class Prospective {
   @Id
   @GeneratedValue(generator="system-uuid")
@@ -19,11 +26,11 @@ public class Prospective {
   private String prospectiveId;
   @NotNull
   @NotBlank
-  @NotEmpty
+  @NotEmpty(message="First name cannot be empty")
   private String firstName;
-  @NotNull
+  @NotNull(message= "Last name may not be empty")
   @NotBlank
-  @NotEmpty
+  @NotEmpty(message="Last name cannot be empty")
   private String lastName;
   @NotNull
   @NotBlank

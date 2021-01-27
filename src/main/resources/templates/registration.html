@@ -19,19 +19,21 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
 <body>
-  <div th:replace="./fragments/header :: header">
+  <div th:replace="./fragments/header :: header">...</div>
   </div>
 <h1 class="col-md-6 login-form-1">Registration</h1>
-<form method="post"  action="registration.html" th:action="@{/registration}" th:object="${prospective}"  modelAttribute="prospective">
+<!-- <form method="post"  action="registration.html" th:action="@{/registration}" th:object="${prospective}"  modelAttribute="newProspective"> -->
+  <form  action="#" th:action="@{/registeredSuccessfully}" th:object="${prospective}"  method="post"> 
     <div class="form-group">
         <label>First Name</label>
-        <input class="form-control" th:field="*{firstName}"/>
+        <input class="form-control" type="text" th:field="*{firstName}"/>
+        <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">errors</div>
         <p th:each="error: ${#fields.errors('firstName')}" 
           th:text="${error}">Validation error</p>
     </div>
     <div class="form-group">
         <label>Last Name</label>
-        <input class="form-control"  th:field="*{lastName}"/>
+        <input class="form-control" type="text"  th:field="*{lastName}"/>
         <p th:each="error : ${#fields.errors('lastName')}" 
           th:text="${error}">Validation error</p>
     </div>
@@ -40,6 +42,7 @@
         <input class="form-control" type="email" th:field="*{email}"/>
         <p th:each="error : ${#fields.errors('email')}" 
           th:text="${error}">Validation error</p>
+        <p th:if="${#fields.hasErrors('email')}" class="error" th:errors="*{email}">Validation error</p>
     </div>
     <!-- <div>
         <label th:text="#{label.user.password}">password</label>
@@ -54,8 +57,9 @@
     <button type="submit" th:text="Submit">Submit</button>
 </form>
 
-<a th:href="@{/login.html}" th:text="Login">login</a>
+<a th:href="@{/login}" th:text="Login">login</a>
 </div>
 <div th:replace="./fragments/footer :: footer">...</div>
 </body>
+
 </html>

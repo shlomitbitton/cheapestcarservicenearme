@@ -20,16 +20,16 @@
     <!-- <span class="success">${dataSaved}</span> -->
     <section id="login" class="section"></section>
       <div align="center">
-        <form  th:action="@{/login}" th:object="${login}" method="post"  modelAttribute="login" class="form-horizontal">
+        <form  action="#" th:action="@{/findServiceForm}" th:object="${user}" method="post" class="form-horizontal">
             <fieldset>
               <label for="username">Username</label>:
-              <input type="text"  id="username" name="username" /> <br />
+              <input type="text"  id="username" name="*{user.username}" /> <br />
               <label for="password">Password</label>:
-              <input type="password"  id="password" name="password" /> <br />
+              <input type="password"  id="password" name="*{user.password}" /> <br />
               <input type="submit" value="Login"/> 
             </fieldset>
           </form>
-          <!-- <a href="#" th:href="@{/goToRegistration}">Register</a> -->
+          <a href="#" th:href="@{/registration}">Register</a>
       </div>
     </section>
   </div>

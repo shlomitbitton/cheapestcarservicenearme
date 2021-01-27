@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+
 import java.util.List;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -19,6 +22,7 @@ public class ServiceInquiry {
   @GenericGenerator(name="system-uuid", strategy = "uuid")
   private String serviceInquiryId;
   private String location;
+
 
   @ManyToOne(fetch = FetchType.LAZY)
   private Prospective prospective;

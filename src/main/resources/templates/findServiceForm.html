@@ -21,21 +21,22 @@
     <!-- <span class="success">${dataSaved}</span> -->
     
     <div>
-       <form method="post"  action="findService" th:action="@{/findService}" th:object="${serviceInquiry}"  modelAttribute="serviceInquiry">
-          <label for="location">Service inquired about</label>:
+        <form action="#" th:action="@{/availableServices}" th:object="${vehicleService}"  modelAttribute="vehicleService"  method="post">
+          <label for="location">Service inquired</label>:
 
-          <select class="" th:field="${listOfServices}"  id="listOfServicesId">
+          <select class="" th:field="${serviceName}"  id="serviceId">
             <option value="0">Service Inquired</option>
-            <option th:each="service : ${listOfServices}" th:value="${listOfServicesId}" th:text="${operator.operatorName}"></option>
+            <option th:each="service : ${serviceName}" th:value="${serviceName}" ></option>
           </select>
-
-
+<!-- 
           <select th:field="*{listOfServices}">
             <option th:value="'OilChange'" th:text="Oil Change"></option>
             <option th:value="'Brakes'" th:text="Brakes"></option>
-         </select>
+         </select> -->
+
           <label for="location">Location</label>
-          <select th:field="*{location}">
+          <select th:field="*{shop.address}">
+            <option th:each="address : ${address}" th:value="${address}" ></option>
             <option th:value="'GrassValley'" th:text="Grass Valley"></option>
             <option th:value="'Nevada City'" th:text="Nevada City"></option>
          </select>

@@ -1,5 +1,7 @@
 package com.cheapestcarservicenearme.repository;
+
 import com.cheapestcarservicenearme.model.Prospective;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.data.repository.CrudRepository;
 

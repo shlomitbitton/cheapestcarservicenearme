@@ -4,3 +4,6 @@ This project's aim is to find within seconds the cheapest and affordable car rep
 #create database ccs;
 #GRANT ALL PRIVILEGES ON ccs. * TO 'user'@'localhost';
 #flush privileges;
+
+cd /usr/local/mysql/bin
+mysql -u root -p lunchorder

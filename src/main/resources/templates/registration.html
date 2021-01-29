@@ -26,24 +26,40 @@
   <form  action="#" th:action="@{/registeredSuccessfully}" th:object="${prospective}"  method="post"> 
     <div class="form-group">
         <label>First Name</label>
-        <input class="form-control" type="text" th:field="*{firstName}"/>
-        <div th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">errors</div>
-        <p th:each="error: ${#fields.errors('firstName')}" 
+        <input class="form-control" type="text" th:name="firstName"/>
+        <div th:if="${#fields.hasErrors('prospective.firstName')}" th:errors="*{prospective.firstName}">errors</div>
+        <p th:each="error: ${#fields.errors('prospective.firstName')}" 
           th:text="${error}">Validation error</p>
+        <p th:if="${#fields.hasErrors('prospective.firstName')}" class="error" th:errors="*{prospective.firstName}">Validation error</p>
     </div>
     <div class="form-group">
         <label>Last Name</label>
-        <input class="form-control" type="text"  th:field="*{lastName}"/>
-        <p th:each="error : ${#fields.errors('lastName')}" 
+        <input class="form-control" type="text"  th:name="lastName"/>
+        <p th:each="error : ${#fields.errors('prospective.lastName')}" 
           th:text="${error}">Validation error</p>
+        <p th:if="${#fields.hasErrors('prospective.lastName')}" class="error" th:errors="*{prospective.lastName}">Validation error</p>
     </div>
     <div class="form-group">
         <label>Email</label>
-        <input class="form-control" type="email" th:field="*{email}"/>
-        <p th:each="error : ${#fields.errors('email')}" 
+        <input class="form-control" type="email" th:name="email"/>
+        <p th:each="error : ${#fields.errors('prospective.email')}" 
           th:text="${error}">Validation error</p>
-        <p th:if="${#fields.hasErrors('email')}" class="error" th:errors="*{email}">Validation error</p>
+        <p th:if="${#fields.hasErrors('prospective.email')}" class="error" th:errors="*{prospective.email}">Validation error</p>
     </div>
+    <div class="form-group">
+      <label>Username</label>
+      <input class="form-control" type="text" th:name="userName"/>
+      <p th:each="error : ${#fields.errors('user.userName')}" 
+        th:text="${error}">Validation error</p>
+      <p th:if="${#fields.hasErrors('user.userName')}" class="error" th:errors="*{user.userName}">Validation error</p>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input class="form-control" type="text" th:name="password"/>
+    <p th:each="error : ${#fields.errors('user.password')}" 
+      th:text="${error}">Validation error</p>
+    <p th:if="${#fields.hasErrors('user.password')}" class="error" th:errors="*{user.password}">Validation error</p>
+</div>
     <!-- <div>
         <label th:text="#{label.user.password}">password</label>
         <input type="password" th:field="*{password}"/>

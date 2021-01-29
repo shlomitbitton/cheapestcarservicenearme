@@ -7,9 +7,12 @@ import com.cheapestcarservicenearme.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
@@ -23,16 +26,17 @@ public class LoginController {
     System.out.println("Login page");
     return "login";
   }
-//to fix
-  @PostMapping("/findServiceForm")
-  public String showFindServiceForm(@Valid @ModelAttribute("userName")String userName,@Valid @ModelAttribute("password")String password){
-    Iterable<User> userList = userService.getAllUsers();
-    for(User user :userList){
-      if(userName.equals(user.getUserName()) && password.equals(user.getPassword())){
-        return "findServiceForm";
-      }
-    }
-    return "";
+
+  @GetMapping("/findServiceForm")
+  public String loginToFindServiceForm(@Valid @RequestParam("userName")String userName, @Valid @RequestParam("password")String password, Model model){
+      System.out.println("userName: " + userName + " password: " +password);
+      Iterable<User> userList = userService.getAllUsers();
+      for(User u :userList){
+        if(userName.equals(u.getUserName()) && password.equals(u.getPassword())){
+          return "findServiceForm";
+        }
+      }  
+    return "login";
   }
 
 }

@@ -20,12 +20,12 @@
     <!-- <span class="success">${dataSaved}</span> -->
     <section id="login" class="section"></section>
       <div align="center">
-        <form  action="#" th:action="@{/findServiceForm}" th:object="${user}" method="post" class="form-horizontal">
+        <form  action="#" th:action="@{/findServiceForm}" th:object="${user}" method="get">
             <fieldset>
-              <label for="username">Username</label>:
-              <input type="text"  id="username" name="*{user.username}" /> <br />
+              <label for="userName">Username</label>:
+              <input   type="text" th:name="userName" /> <br />
               <label for="password">Password</label>:
-              <input type="password"  id="password" name="*{user.password}" /> <br />
+              <input  type="text" th:name="password" /> <br />
               <input type="submit" value="Login"/> 
             </fieldset>
           </form>
